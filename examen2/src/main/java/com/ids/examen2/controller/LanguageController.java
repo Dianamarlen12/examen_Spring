@@ -34,8 +34,8 @@ public class LanguageController {
     }
 
     @GetMapping("/detalles/{id}")
-    public ResponseEntity<Language> getLanguageById(@PathVariable long idLenguage) {
-        return ResponseEntity.ok().body(this.languageService.getLanguageById(idLenguage));
+    public ResponseEntity<Language> getLanguageById(@PathVariable long id) {
+        return ResponseEntity.ok().body(this.languageService.getLanguageById(id));
     }
 
     @PostMapping("/crear")
@@ -45,14 +45,14 @@ public class LanguageController {
 
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Language> updateLanguaje(@PathVariable long idLenguage, @RequestBody Language Language){
-        Language.setIdLanguage(idLenguage);
+    public ResponseEntity<Language> updateLanguaje(@PathVariable long id, @RequestBody Language Language){
+        Language.setId(id);
         return ResponseEntity.ok().body(this.languageService.updateLanguage(Language));
     }
 
     @DeleteMapping("/delete_Languaje/{id}")
-    public HttpStatus deleteLanguaje(@PathVariable long idLenguage){
-        this.languageService.deleteLanguaje(idLenguage);
+    public HttpStatus deleteLanguaje(@PathVariable long id){
+        this.languageService.deleteLanguaje(id);
         return HttpStatus.OK;
     }
 }

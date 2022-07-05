@@ -6,9 +6,17 @@ import com.ids.examen2.service.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
 @RestController
 @RequestMapping("/airports")
 public class AirportController {
@@ -19,14 +27,14 @@ public class AirportController {
     public ResponseEntity<?> getAllAirport(){
         List<Airport> lista = airportService.getAllAirports();
         if(lista.isEmpty()){
-            return new ResponseEntity<>(new Mensaje("Sin airports en la base de datos"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new Mensaje("No se encuentran aeropuertos en la base de datos"), HttpStatus.BAD_REQUEST);
         }
         return ResponseEntity.ok().body(airportService.getAllAirports());
     }
 
-    @GetMapping("/detalles/{id}")
-    public ResponseEntity<Airport> getAirportById(@PathVariable long idAirport) {
-        return ResponseEntity.ok().body(this.airportService.getAirportById(idAirport));
+    @GetMapping("/detalle/{id}")
+    public ResponseEntity<Airport> getAirportById(@PathVariable long id) {
+        return ResponseEntity.ok().body(this.airportService.getAirportById(id));
     }
 
     @PostMapping("/crear")
@@ -36,14 +44,14 @@ public class AirportController {
 
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Airport> updateAirport(@PathVariable long idAirport, @RequestBody Airport airport){
-        airport.setIdAirport(idAirport);
+    public ResponseEntity<Airport> updateAirport(@PathVariable long id, @RequestBody Airport airport){
+        airport.setId(id);
         return ResponseEntity.ok().body(this.airportService.updateAirport(airport));
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public HttpStatus deleteAirport(@PathVariable long idAirport){
-        this.airportService.deleteAirport(idAirport);
+    public HttpStatus deleteAirport(@PathVariable long id){
+        this.airportService.deleteAirport(id);
         return HttpStatus.OK;
     }
 }

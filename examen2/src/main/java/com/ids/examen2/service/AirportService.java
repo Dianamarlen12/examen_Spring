@@ -11,7 +11,7 @@ public interface AirportService {
 
     List<Airport> getAllAirports();
 
-    Airport getAirportById(long idAirport);
+    Airport getAirportById(long airportId);
 
-    void deleteAirport(long idAirport);
+    void deleteAirport(long id);
 }

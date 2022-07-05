@@ -16,5 +16,5 @@ public interface LanguageService {
 
     //void deleteLanguage(long id);
 
-    void deleteLanguaje(long languajeId);
+    void deleteLanguaje(long id);
 }

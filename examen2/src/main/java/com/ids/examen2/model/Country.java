@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idCountry;
+    private long id;
 
     @Column(name = "code")
     private String code;
@@ -15,12 +15,12 @@ public class Country {
     @Column(name = "name")
     private String name;
 
-    public long getIdCountry() {
-        return idCountry;
+    public long getId() {
+        return id;
     }
 
-    public void setIdCountry(long idCountry) {
-        this.idCountry = idCountry;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getCode() {

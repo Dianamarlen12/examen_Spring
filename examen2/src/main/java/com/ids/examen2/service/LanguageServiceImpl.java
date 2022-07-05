@@ -23,17 +23,17 @@ public class LanguageServiceImpl implements LanguageService {
 
     @Override
     public Language updateLanguage(Language language) {
-        Optional<Language> languageDb = this.languageRepository.findById(language.getIdLanguage());
+        Optional<Language> languageDb = this.languageRepository.findById(language.getId());
 
         if (languageDb.isPresent()){
             Language languageUpdate = languageDb.get();
-            languageUpdate.setIdLanguage(language.getIdLanguage());
+            languageUpdate.setId(language.getId());
             languageUpdate.setName(language.getCode());
             languageUpdate.setCode(language.getCode());
             languageRepository.save(languageUpdate);
             return languageUpdate;
         }else {
-            throw new ResourceNotFoundException("Record not found with id : " + language.getIdLanguage());
+            throw new ResourceNotFoundException("Record not found with id : " + language.getId());
         }
     }
 

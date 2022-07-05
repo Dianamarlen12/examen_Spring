@@ -24,16 +24,16 @@ public class CountryServiceImpl implements CountryService{
 
     @Override
     public Country updateCountry(Country country) {
-        Optional<Country> countryDb = this.countryRepository.findById(country.getIdCountry());
+        Optional<Country> countryDb = this.countryRepository.findById(country.getId());
         if (countryDb.isPresent()){
             Country countryUpdate = countryDb.get();
-            countryUpdate.setIdCountry(country.getIdCountry());
+            countryUpdate.setId(country.getId());
             countryUpdate.setCode(country.getCode());
             countryUpdate.setName(country.getName());
             countryRepository.save(countryUpdate);
             return countryUpdate;
         } else {
-            throw new ResourceNotFoundException("Record not found with id: " + country.getIdCountry());
+            throw new ResourceNotFoundException("Record not found with id: " + country.getId());
         }
     }
 
@@ -43,22 +43,22 @@ public class CountryServiceImpl implements CountryService{
     }
 
     @Override
-    public Country getCountryById(long idCountry) {
-        Optional<Country> countryDb = this.countryRepository.findById(idCountry);
+    public Country getCountryById(long countryId) {
+        Optional<Country> countryDb = this.countryRepository.findById(countryId);
         if(countryDb.isPresent()){
             return countryDb.get();
         } else {
-            throw new ResourceNotFoundException("Record not found with id: " + idCountry);
+            throw new ResourceNotFoundException("Record not found with id: " + countryId);
         }
     }
 
     @Override
-    public void deleteCountry(long idCountry) {
-        Optional<Country> countryDb = this.countryRepository.findById(idCountry);
+    public void deleteCountry(long countryId) {
+        Optional<Country> countryDb = this.countryRepository.findById(countryId);
         if(countryDb.isPresent()){
             this.countryRepository.delete(countryDb.get());
         } else {
-            throw new ResourceNotFoundException("Record not found with id: " + idCountry);
+            throw new ResourceNotFoundException("Record not found with id: " + countryId);
         }
     }
 }

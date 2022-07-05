@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idAirport;
+    private long id;
 
     @Column(name = "code")
     private String code;
@@ -15,12 +15,12 @@ public class Airport {
     @Column(name = "name")
     private String name;
 
-    public long getIdAirport() {
-        return idAirport;
+    public long getId() {
+        return id;
     }
 
-    public void setIdAirport(long idAirport) {
-        this.idAirport = idAirport;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getCode() {
@@ -38,5 +38,6 @@ public class Airport {
     public void setName(String name) {
         this.name = name;
     }
+
 
 }

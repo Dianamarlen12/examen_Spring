@@ -25,17 +25,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee updateEmployee(Employee employee) {
-        Optional<Employee> employeeDb = this.employeeRepository.findById(employee.getIdEmployee());
+        Optional<Employee> employeeDb = this.employeeRepository.findById(employee.getId());
 
         if (employeeDb.isPresent()){
             Employee employeeUpdate = employeeDb.get();
-            employeeUpdate.setIdEmployee(employee.getIdEmployee());
+            employeeUpdate.setId(employee.getId());
             employeeUpdate.setSurname(employee.getSurname());
             employeeUpdate.setFirstname(employee.getFirstname());
             employeeRepository.save(employeeUpdate);
             return employeeUpdate;
         }else {
-            throw new ResourceNotFoundException("Record not found with id : " + employee.getIdEmployee());
+            throw new ResourceNotFoundException("Record not found with id : " + employee.getId());
         }
     }
 

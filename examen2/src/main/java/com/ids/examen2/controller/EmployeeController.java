@@ -32,8 +32,8 @@ public class EmployeeController {
     }
 
     @GetMapping("/detalles/{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable long idEmployee) {
-        return ResponseEntity.ok().body(this.employeeService.getEmployeeById(idEmployee));
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable long id) {
+        return ResponseEntity.ok().body(this.employeeService.getEmployeeById(id));
     }
 
     @PostMapping("/crear")
@@ -43,14 +43,14 @@ public class EmployeeController {
 
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable long idEmployee, @RequestBody Employee employee){
-        employee.setIdEmployee(idEmployee);
+    public ResponseEntity<Employee> updateEmployee(@PathVariable long id, @RequestBody Employee employee){
+        employee.setId(id);
         return ResponseEntity.ok().body(this.employeeService.updateEmployee(employee));
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public HttpStatus deleteEmployee(@PathVariable long idEmployee){
-        this.employeeService.deleteEmployee(idEmployee);
+    public HttpStatus deleteEmployee(@PathVariable long id){
+        this.employeeService.deleteEmployee(id);
         return HttpStatus.OK;
     }
 }

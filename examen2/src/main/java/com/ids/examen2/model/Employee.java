@@ -9,7 +9,7 @@ import java.util.Set;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idEmployee;
+    private long id;
 
     @Column(name = "surname")
     private String surname;
@@ -17,12 +17,12 @@ public class Employee {
     @Column(name = "firstname")
     private String firstname;
 
-    public long getIdEmployee() {
-        return idEmployee;
+    public long getId() {
+        return id;
     }
 
-    public void setIdEmployee(long idEmployee) {
-        this.idEmployee = idEmployee;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getSurname() {

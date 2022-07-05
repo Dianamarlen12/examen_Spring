@@ -24,16 +24,17 @@ public class AirportServiceImpl implements AirportService {
 
     @Override
     public Airport updateAirport(Airport airport) {
-        Optional<Airport> airportDb = this.airportRepository.findById(airport.getIdAirport());
+        Optional<Airport> airportDb = this.airportRepository.findById(airport.getId());
 
         if (airportDb.isPresent()){
             Airport airportUpdate = airportDb.get();
-            airportUpdate.setIdAirport(airport.getIdAirport());
+            airportUpdate.setId(airport.getId());
             airportUpdate.setName(airport.getName());
+            airportUpdate.setCode(airport.getCode());
             airportRepository.save(airportUpdate);
             return airportUpdate;
         }else {
-            throw new ResourceNotFoundException("Record not found with id : " + airport.getIdAirport());
+            throw new ResourceNotFoundException("Record not found with id : " + airport.getId());
         }
     }
 
@@ -43,24 +44,24 @@ public class AirportServiceImpl implements AirportService {
     }
 
     @Override
-    public Airport getAirportById(long idAirport) {
-        Optional<Airport> airportDb = this.airportRepository.findById(idAirport);
+    public Airport getAirportById(long airportId) {
+        Optional<Airport> airportDB = this.airportRepository.findById(airportId);
 
-        if (airportDb.isPresent()) {
-            return airportDb.get();
+        if (airportDB.isPresent()) {
+            return airportDB.get();
         } else {
-            throw new ResourceNotFoundException("Record not found with id : " + idAirport);
+            throw new ResourceNotFoundException("Record not found with id : " + airportId);
         }
     }
 
     @Override
-    public void deleteAirport(long idAirport) {
-        Optional<Airport> airportDb = this.airportRepository.findById(idAirport);
+    public void deleteAirport(long airportId) {
+        Optional<Airport> airportDB = this.airportRepository.findById(airportId);
 
-        if (airportDb.isPresent()) {
-            this.airportRepository.delete(airportDb.get());
+        if (airportDB.isPresent()) {
+            this.airportRepository.delete(airportDB.get());
         } else {
-            throw new ResourceNotFoundException("Record not found with id: " + idAirport);
+            throw new ResourceNotFoundException("Record not found with id: " + airportId);
         }
     }
 }

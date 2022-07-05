@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idLanguage;
+    private long id;
 
     @Column(name = "code")
     private String code;
@@ -15,12 +15,12 @@ public class Language {
     @Column(name = "name")
     private String name;
 
-    public long getIdLanguage() {
-        return idLanguage;
+    public long getId() {
+        return id;
     }
 
-    public void setIdLanguage(long idLanguage) {
-        this.idLanguage = idLanguage;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getCode() {
