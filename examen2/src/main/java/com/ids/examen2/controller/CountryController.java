@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Countrys")
+@RequestMapping("/country")
 public class CountryController {
     @Autowired
     private CountryService CountryService;
@@ -34,7 +34,6 @@ public class CountryController {
     public ResponseEntity<Country> createCountry(@RequestBody Country Country) {
         return ResponseEntity.ok().body(this.CountryService.createCountry(Country));
     }
-
 
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<Country> updateCountry(@PathVariable long idCountry, @RequestBody Country Country){

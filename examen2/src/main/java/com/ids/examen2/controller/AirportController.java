@@ -3,7 +3,6 @@ package com.ids.examen2.controller;
 import com.ids.examen2.exception.Mensaje;
 import com.ids.examen2.model.Airport;
 import com.ids.examen2.service.AirportService;
-import com.ids.examen2.service.LanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

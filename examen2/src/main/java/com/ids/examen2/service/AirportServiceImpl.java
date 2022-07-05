@@ -43,24 +43,24 @@ public class AirportServiceImpl implements AirportService {
     }
 
     @Override
-    public Airport getAirportById(long airportId) {
-        Optional<Airport> airportDb = this.airportRepository.findById(airportId);
+    public Airport getAirportById(long idAirport) {
+        Optional<Airport> airportDb = this.airportRepository.findById(idAirport);
 
         if (airportDb.isPresent()) {
             return airportDb.get();
         } else {
-            throw new ResourceNotFoundException("Record not found with id : " + airportId);
+            throw new ResourceNotFoundException("Record not found with id : " + idAirport);
         }
     }
 
     @Override
-    public void deleteAirport(long airportId) {
-        Optional<Airport> airportDb = this.airportRepository.findById(airportId);
+    public void deleteAirport(long idAirport) {
+        Optional<Airport> airportDb = this.airportRepository.findById(idAirport);
 
         if (airportDb.isPresent()) {
             this.airportRepository.delete(airportDb.get());
         } else {
-            throw new ResourceNotFoundException("Record not found with id: " + airportId);
+            throw new ResourceNotFoundException("Record not found with id: " + idAirport);
         }
     }
 }

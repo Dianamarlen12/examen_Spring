@@ -43,22 +43,22 @@ public class CountryServiceImpl implements CountryService{
     }
 
     @Override
-    public Country getCountryById(long countryId) {
-        Optional<Country> countryDb = this.countryRepository.findById(countryId);
+    public Country getCountryById(long idCountry) {
+        Optional<Country> countryDb = this.countryRepository.findById(idCountry);
         if(countryDb.isPresent()){
             return countryDb.get();
         } else {
-            throw new ResourceNotFoundException("Record not found with id: " + countryId);
+            throw new ResourceNotFoundException("Record not found with id: " + idCountry);
         }
     }
 
     @Override
-    public void deleteCountry(long countryId) {
-        Optional<Country> countryDb = this.countryRepository.findById(countryId);
+    public void deleteCountry(long idCountry) {
+        Optional<Country> countryDb = this.countryRepository.findById(idCountry);
         if(countryDb.isPresent()){
             this.countryRepository.delete(countryDb.get());
         } else {
-            throw new ResourceNotFoundException("Record not found with id: " + countryId);
+            throw new ResourceNotFoundException("Record not found with id: " + idCountry);
         }
     }
 }

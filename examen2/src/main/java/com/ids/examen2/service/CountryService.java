@@ -8,6 +8,6 @@ public interface CountryService {
     Country createCountry(Country country);
     Country updateCountry(Country country);
     List<Country> getAllCountry();
-    Country getCountryById(long countryId);
-    void deleteCountry(long id);
+    Country getCountryById(long idCountry);
+    void deleteCountry(long idCountry);
 }

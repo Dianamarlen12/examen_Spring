@@ -9,6 +9,9 @@ public class Airport {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idAirport;
 
+    @Column(name = "code")
+    private String code;
+
     @Column(name = "name")
     private String name;
 
@@ -18,6 +21,14 @@ public class Airport {
 
     public void setIdAirport(long idAirport) {
         this.idAirport = idAirport;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getName() {
